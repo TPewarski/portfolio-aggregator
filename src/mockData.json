@@ -1,0 +1,25 @@
+{
+    "portfolio": {
+        "id": "123",
+        "positions": [
+            {
+                "id": "12345",
+                "ticker": "STM",
+                "displayName": "stmicroelectronics",
+                "quantity": 123,
+                "price": 23.55,
+                "marketValue": 2896.65,
+                "costBasis": 3000
+            },
+            {
+                "id": "12345",
+                "ticker": "BB",
+                "displayName": "Blackberry",
+                "quantity": 123,
+                "price": 23.55,
+                "marketValue": 2896.65,
+                "costBasis": 3000
+            }
+        ]
+    }
+}
