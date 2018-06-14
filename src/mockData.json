@@ -1,22 +1,33 @@
 {
     "portfolio": {
         "id": "123",
+        "user": "456",//or inflated
         "positions": [
             {
                 "id": "12345",
-                "ticker": "STM",
-                "displayName": "stmicroelectronics",
+                "status": "OPEN",
+                "account": "Schwab-ira",
+                "asset": {
+                    "ticker": "STM",
+                    "displayName": "stmicroelectronics",
+                    "price": 23.55,
+                    "tags": ["Semiconductors", "Apple-Supplier"]
+                    //historical price for a given interval at a given time range
+                },
                 "quantity": 123,
-                "price": 23.55,
-                "marketValue": 2896.65,
-                "costBasis": 3000
+                "marketValue": 2896.65, //derived this from a stock data table
+                "costBasis": 3000, //in usd
+                "createdDate": "date string"
+                //is any change in the position a "new" position?
             },
             {
                 "id": "12345",
-                "ticker": "BB",
-                "displayName": "Blackberry",
+                "asset": {
+                    "ticker": "BB",
+                    "displayName": "Blackberry",
+                    "price": 23.55
+                },
                 "quantity": 123,
-                "price": 23.55,
                 "marketValue": 2896.65,
                 "costBasis": 3000
             }
