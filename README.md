@@ -1,3 +1,9 @@
+Setting up from scratch
+Install Postgres following this guide: https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb
+
+
+Their shit
+--------
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
