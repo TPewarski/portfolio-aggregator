@@ -1,6 +1,13 @@
 Setting up from scratch
 Install Postgres following this guide: https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb
 
+----
+Features
+
+- Determine multiple range that a company is trading at and heat map to determine the multiple where the stock normally trades
+- Use Standard deviation to determine if PE or PS is more accurate as a stocks multiple.
+- Normalize multiple heatmap in regards to the appropriate index multiple to find undervalued stocks
+
 
 Their shit
 --------
