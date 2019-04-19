@@ -1,7 +1,8 @@
+require('isomorphic-fetch');
 const express = require('express');
 const { getFinancialsURL, getRevenueData } = require('../helpers/IEXHelpers');
 const heatMapChart = require('./tools/heatMapChart');
-require('isomorphic-fetch');
+const spyNormilization = require('./tools/spyNormilization');
 const app = express();
 const port = 1337;
 

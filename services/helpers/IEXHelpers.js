@@ -1,12 +1,19 @@
 require('isomorphic-fetch');
-const IEX_URL_PREFIX = 'https://api.iextrading.com/1.0';
+const querystring = require('querystring');
+const { iex_public_key } = require('../../apiKeys.json');
 
-const getFinancialsURL = (symbol, params) =>
-    `${IEX_URL_PREFIX}/stock/${symbol}/financials?${params || ''}`;
+const IEX_URL_PREFIX = 'https://cloud.iexapis.com/v1';
+const IEX_SANDBOX_URL = 'https://sandbox.iexapis.com';
+
+const getIEXUrl = (isSandbox = false) => (isSandbox ? IEX_SANDBOX_URL : IEX_URL_PREFIX);
+
+const getParams = params =>
+    querystring.stringify(Object.assign({ token: iex_public_key }, params), '&', '=');
 
 const normalizeResp = resp => resp.json();
+
 function getRevenueData(symbol, dateRange, period) {
-    return fetch(getFinancialsURL(symbol))
+    return fetch(`${getIEXUrl()}/stock/${symbol}/financials/2?${getParams()}`)
         .then(normalizeResp)
         .then(data => {
             const financials = data.financials;
@@ -20,10 +27,10 @@ function getRevenueData(symbol, dateRange, period) {
 }
 
 //period 1y, 2y
-function getPriceData(symbol, period) {
-    return fetch(`${IEX_URL_PREFIX}/stock/${symbol}/chart/${period}`)
+function getPriceData(symbol, range, date) {
+    return fetch(`${getIEXUrl()}/stock/${symbol}/chart/${range}/${date}?${getParams()}`)
         .then(normalizeResp)
-        .then(data => data.map(({ date, close }) => ({ date, close })));
+        .then(console.log);
 }
 
 module.exports = {
