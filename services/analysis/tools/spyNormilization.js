@@ -39,4 +39,4 @@ const spyNormilization = async (symbol, period, dateRange) => {
     }
 };
 
-spyNormilization('hon');
+// spyNormilization('hon');
