@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.16.4",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash.get": "^4.4.2",
+    "lodash.zipwith": "^4.2.0",
     "pg": "^7.5.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -13,5 +17,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "description": "Setting up from scratch Install Postgres following this guide: https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TPewarski/portfolio-aggregator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TPewarski/portfolio-aggregator/issues"
+  },
+  "homepage": "https://github.com/TPewarski/portfolio-aggregator#readme"
 }
