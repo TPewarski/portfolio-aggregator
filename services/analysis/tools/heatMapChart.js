@@ -1,4 +1,5 @@
 const { getRevenueData, getPriceData } = require('../../helpers/IEXHelpers');
+
 const heatMap = (multipleList, period) => {
     // get multiple range
     //divide by multiple period to create buckets
@@ -6,8 +7,20 @@ const heatMap = (multipleList, period) => {
     // return bucket map
 };
 
-const determineMultiple = (normalizeData, prices) => {
+const generateMultiple = (normalizeData, prices) => {
+    // assumes normalize data and prices is sorted by date.
     // map to multiple for every price
+    let startRange = null;
+    let endRange = null;
+    let cursor = 0;
+
+    normalizeData.forEach(({ reportDate, revenue }) => {
+        // revenue applies from report date forward
+        startRange = reportDate;
+        endRange = new Date(reportDate);
+
+        prices.filter()
+    });
 };
 
 const heatMapChart = async symbol => {
@@ -18,6 +31,7 @@ const heatMapChart = async symbol => {
     // const priceSeries = await getPriceData(symbol, '1y');
     // console.log('priceSeries', priceSeries);
     //generate multiple data
+    const multiples = generateMultiple(revenue, priceSeries);
     //generate heatMap
 
     return {

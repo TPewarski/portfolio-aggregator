@@ -5,8 +5,17 @@ Install Postgres following this guide: https://www.codementor.io/engineerapart/g
 Features
 
 - Determine multiple range that a company is trading at and heat map to determine the multiple where the stock normally trades
+  - maybe this should be normalized by book value. i.e. a company with a higher book value butlower p/e is def worth more
 - Use Standard deviation to determine if PE or PS is more accurate as a stocks multiple.
 - Normalize multiple heatmap in regards to the appropriate index multiple to find undervalued stocks
+- Contrarian indicator
+  - find some way to locate trades that are unbalanced and simply bet on that boat tipping over and people having to unwind. Maybe look at hedge fund positions? call premiums vs put premiums?
+
+
+
+
+
+  
 
 
 Their shit
