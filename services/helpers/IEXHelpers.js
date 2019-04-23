@@ -17,12 +17,17 @@ const getParams = (params, isSandbox) =>
         '='
     );
 
-const normalizeResp = async resp => {
-    // const jsonifiedResp = await resp.json();
+const normalizeResp = resp => {
     if (resp.status !== 200) {
-        console.log('resp', jsonifiedResp);
+        console.log('resp', resp);
+        return resp;
     }
+    // console.log(resp.json());
     return resp.json();
+};
+
+const iexFetch = (...args) => {
+    return fetch(...args).then(normalizeResp);
 };
 
 async function getRevenueData(symbol, last = 4, params) {
@@ -41,13 +46,24 @@ async function getRevenueData(symbol, last = 4, params) {
 }
 
 //period 1y, 2y
-const getPriceData = async (symbol, range = 'ytd', params) => {
-    return fetch(
-        `${getIEXUrl(isSandbox)}/stock/${symbol}/chart/${range}?${getParams(params, isSandbox)}`
-    ).then(normalizeResp);
+const getPriceData = async (symbol, range = 'ytd', date, params) => {
+    // if there is a range we use range, if there is a date we add date to the url and use date
+    //not sure if we can use both so this func might fail if you try to
+    const url = `${getIEXUrl(isSandbox)}/stock/${symbol}/chart/${range ? range + '/' : ''}${
+        date ? `date/${date}` : ''
+    }?${getParams(params, isSandbox)}`;
+    return fetch(url).then(normalizeResp);
 };
 
+const getKeyStats = (symbol, stat) => {
+    const url = `${getIEXUrl(isSandbox)}/stock/${symbol}/stats/${stat || ''}?${getParams(
+        null,
+        isSandbox
+    )}`;
+    return iexFetch(url);
+};
 module.exports = {
     getRevenueData,
-    getPriceData
+    getPriceData,
+    getKeyStats
 };
