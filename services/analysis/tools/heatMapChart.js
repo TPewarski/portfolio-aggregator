@@ -10,13 +10,13 @@ const determineMultiple = (normalizeData, prices) => {
     // map to multiple for every price
 };
 
-const heatMapChart = async (symbol, fincialDataKey, period, dateRange) => {
-    //get prices
-    const priceSeries = await getPriceData(symbol, '1y');
-    console.log('priceSeries', priceSeries);
+const heatMapChart = async symbol => {
     //get financial data
-    const revenue = await getRevenueData(symbol);
+    const revenue = await getRevenueData(symbol, 4);
     console.log('revenue', revenue);
+    //get prices from the start of revenue data
+    // const priceSeries = await getPriceData(symbol, '1y');
+    // console.log('priceSeries', priceSeries);
     //generate multiple data
     //generate heatMap
 
@@ -29,5 +29,7 @@ const heatMapChart = async (symbol, fincialDataKey, period, dateRange) => {
         heatMap: {}
     };
 };
+
+heatMapChart('xone');
 
 module.exports = heatMapChart;

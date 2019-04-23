@@ -25,14 +25,13 @@ const normalizeResp = async resp => {
     return resp.json();
 };
 
-async function getRevenueData(symbol, range, params) {
+async function getRevenueData(symbol, last = 4, params) {
     return fetch(
-        `${getIEXUrl(isSandbox)}/stock/${symbol}/financials/2?${getParams(params, isSandbox)}`
+        `${getIEXUrl(isSandbox)}/stock/${symbol}/financials/${last}?${getParams(params, isSandbox)}`
     )
         .then(normalizeResp)
         .then(data => {
             const financials = data.financials;
-            // console.log('data', data);
             return financials.map(({ totalRevenue, reportDate }) => ({
                 revenue: totalRevenue,
                 reportDate
