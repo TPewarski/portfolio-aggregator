@@ -2,7 +2,7 @@ require('isomorphic-fetch');
 const express = require('express');
 const { getRevenueData } = require('../helpers/IEXHelpers');
 const heatMapChart = require('./tools/heatMapChart');
-const spyNormilization = require('./tools/spyNormilization');
+const normalization = require('./tools/normalization');
 const app = express();
 
 module.exports = app;

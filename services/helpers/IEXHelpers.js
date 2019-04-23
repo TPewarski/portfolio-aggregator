@@ -5,7 +5,10 @@ const { iex_pub_key, iex_sandbox_pub_key } = require('../../apiKeys.json');
 const IEX_URL_PREFIX = 'https://cloud.iexapis.com/v1';
 const IEX_SANDBOX_URL = 'https://sandbox.iexapis.com/stable';
 
-const getIEXUrl = (isSandbox = false) => (isSandbox ? IEX_SANDBOX_URL : IEX_URL_PREFIX);
+// TODO put in a config file somwhere
+const isSandbox = true;
+
+const getIEXUrl = isSandbox => (isSandbox ? IEX_SANDBOX_URL : IEX_URL_PREFIX);
 
 const getParams = (params, isSandbox) =>
     querystring.stringify(
@@ -14,12 +17,15 @@ const getParams = (params, isSandbox) =>
         '='
     );
 
-const normalizeResp = resp => {
-    // console.log('resp', resp);
+const normalizeResp = async resp => {
+    // const jsonifiedResp = await resp.json();
+    if (resp.status !== 200) {
+        console.log('resp', jsonifiedResp);
+    }
     return resp.json();
 };
 
-function getRevenueData(symbol, range, params, isSandbox = true) {
+async function getRevenueData(symbol, range, params) {
     return fetch(
         `${getIEXUrl(isSandbox)}/stock/${symbol}/financials/2?${getParams(params, isSandbox)}`
     )
@@ -36,11 +42,11 @@ function getRevenueData(symbol, range, params, isSandbox = true) {
 }
 
 //period 1y, 2y
-function getPriceData(symbol, range = 'ytd', params, isSandbox = true) {
+const getPriceData = async (symbol, range = 'ytd', params) => {
     return fetch(
         `${getIEXUrl(isSandbox)}/stock/${symbol}/chart/${range}?${getParams(params, isSandbox)}`
     ).then(normalizeResp);
-}
+};
 
 module.exports = {
     getRevenueData,
