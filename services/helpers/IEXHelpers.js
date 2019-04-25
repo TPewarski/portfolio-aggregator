@@ -27,6 +27,8 @@ const normalizeResp = resp => {
 };
 
 const iexFetch = (...args) => {
+    // Intentional console.log, log all my calls
+    console.log('Fetching: ', ...args);
     return fetch(...args).then(normalizeResp);
 };
 

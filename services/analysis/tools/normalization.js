@@ -3,13 +3,13 @@ const { getRevenueData, getPriceData } = require('../../helpers/IEXHelpers');
 const zipWith = require('lodash.zipwith');
 const get = require('lodash.get');
 const { getStandardDeviation } = require('../../helpers/mathHelpers');
-const { positions } = require('../../portfolio/portfolio.json');
+const { positions, watchlist } = require('../../portfolio/portfolio.json');
 
 const benchmarkNormalization = async (symbol, period, dataParams, cachedBenchMarkSeries) => {
     try {
         const dataParams = { chartCloseOnly: true };
         //get financial data
-        const targetPriceSeries = await getPriceData(symbol, period, dataParams);
+        const targetPriceSeries = await getPriceData(symbol, period, null, dataParams);
         const benchmarkPriceSeries = cachedBenchMarkSeries
             ? cachedBenchMarkSeries
             : await getPriceData('spy', period, dataParams);
@@ -52,9 +52,9 @@ const evaluatePortfolio = async (portolio, period, dataParams) => {
     // it will run each map function asynchronously so you cant cache and use data from a previous iteration
     // there must be a way to do that
     // thats also why when console logging from the inner map function shit is out of order?
-    const benchMarkspy = await getPriceData('spy', period, dataParams);
-    const benchMarkqqq = await getPriceData('qqq', period, dataParams);
-    const benchMarkxbi = await getPriceData('xbi', period, dataParams);
+    const benchMarkspy = await getPriceData('spy', period, null, dataParams);
+    const benchMarkqqq = await getPriceData('qqq', period, null, dataParams);
+    const benchMarkxbi = await getPriceData('xbi', period, null, dataParams);
     const cachedBenchMarkData = {
         spy: benchMarkspy,
         qqq: benchMarkqqq,
@@ -115,4 +115,5 @@ module.exports = {
     evaluatePortfolio
 };
 
-evaluatePortfolio(positions);
+evaluatePortfolio(positions, '1y');
+evaluatePortfolio(watchlist, '1y');

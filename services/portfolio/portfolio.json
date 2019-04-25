@@ -1,18 +1,24 @@
 {
     "positions": [
-        { "symbol": "bb", "benchmark": "qqq" },
-        { "symbol": "rgr", "benchmark": "spy" },
-        { "symbol": "ttoo", "benchmark": "spy" },
-        { "symbol": "xone", "benchmark": "spy" },
-        { "symbol": "stm", "benchmark": "qqq" },
-        { "symbol": "nxpi", "benchmark": "qqq" },
-        { "symbol": "jpm", "benchmark": "spy" },
-        { "symbol": "coup", "benchmark": "qqq" }
+        { "symbol": "BB", "benchmark": "qqq" },
+        { "symbol": "RGR", "benchmark": "spy" },
+        { "symbol": "TTOO", "benchmark": "xbi" },
+        { "symbol": "XONE", "benchmark": "spy" },
+        { "symbol": "STM", "benchmark": "qqq" },
+        { "symbol": "NXPI", "benchmark": "qqq" },
+        { "symbol": "JPM", "benchmark": "spy" },
+        { "symbol": "COUP", "benchmark": "qqq" },
+        { "symbol": "HON", "benchmark": "spy" },
+        { "symbol": "JNJ", "benchmark": "spy" }
     ],
     "watchlist": [
         {
-            "symbol": "tsla",
+            "symbol": "TSLA",
             "benchmark": "qqq"
+        },
+        {
+            "symbol": "OHI",
+            "benchmark": "spy"
         }
     ]
 }
