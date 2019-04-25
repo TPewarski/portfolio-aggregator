@@ -3,6 +3,7 @@ const { getRevenueData, getPriceData } = require('../../helpers/IEXHelpers');
 const zipWith = require('lodash.zipwith');
 const get = require('lodash.get');
 const { getStandardDeviation } = require('../../helpers/mathHelpers');
+const { positions } = require('../../portfolio/portfolio.json');
 
 const benchmarkNormalization = async (symbol, period, dataParams, cachedBenchMarkSeries) => {
     try {
@@ -114,13 +115,4 @@ module.exports = {
     evaluatePortfolio
 };
 
-evaluatePortfolio([
-    { symbol: 'bb', benchmark: 'qqq' },
-    { symbol: 'rgr', benchmark: 'spy' },
-    { symbol: 'ttoo', benchmark: 'spy' },
-    { symbol: 'xone', benchmark: 'spy' },
-    { symbol: 'stm', benchmark: 'qqq' },
-    { symbol: 'nxpi', benchmark: 'qqq' },
-    { symbol: 'jpm', benchmark: 'spy' },
-    { symbol: 'coup', benchmark: 'qqq' }
-]);
+evaluatePortfolio(positions);

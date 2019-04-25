@@ -1,0 +1,18 @@
+{
+    "positions": [
+        { "symbol": "bb", "benchmark": "qqq" },
+        { "symbol": "rgr", "benchmark": "spy" },
+        { "symbol": "ttoo", "benchmark": "spy" },
+        { "symbol": "xone", "benchmark": "spy" },
+        { "symbol": "stm", "benchmark": "qqq" },
+        { "symbol": "nxpi", "benchmark": "qqq" },
+        { "symbol": "jpm", "benchmark": "spy" },
+        { "symbol": "coup", "benchmark": "qqq" }
+    ],
+    "watchlist": [
+        {
+            "symbol": "tsla",
+            "benchmark": "qqq"
+        }
+    ]
+}
