@@ -1,18 +1,26 @@
-const getStandardDeviation = arr => {
+const get = require('lodash.get');
+
+const getStandardDeviation = (arr, path) => {
     var total = 0;
 
     arr.forEach(val => {
-        total += val;
+        let data = val;
+        if (path) {
+            data = get(val, path);
+        }
+        total += data;
     });
-    for (var i = 0; i < arr.length; i++) {
-        total += arr[i];
-    }
-    var avg = total / arr.length;
+    const avg = total / arr.length;
 
     var total = 0;
-    for (var i = 0; i < arr.length; i++) {
-        total += Math.pow(arr[i] - avg, 2);
-    }
+    arr.forEach(val => {
+        let data = val;
+        if (path) {
+            data = get(val, path);
+        }
+        total += Math.pow(data - avg, 2);
+    });
+
     var s = total / arr.length;
     return Math.pow(s, 0.5);
 };

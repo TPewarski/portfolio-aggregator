@@ -5,6 +5,8 @@ const get = require('lodash.get');
 const { getStandardDeviation } = require('../../helpers/mathHelpers');
 const { positions, watchlist } = require('../../portfolio/portfolio.json');
 
+// const hyphenCase = symbol => symbol && symbol.split('.').join('-');
+
 const benchmarkNormalization = async (symbol, period, dataParams, cachedBenchMarkSeries) => {
     try {
         const dataParams = { chartCloseOnly: true };
@@ -18,6 +20,7 @@ const benchmarkNormalization = async (symbol, period, dataParams, cachedBenchMar
         // dont actually need zipWith can just derive the diff on the FE but w/e
         // still useful to compare dates make sure data is good
         const diffs = [];
+        // console.log(targetPriceSeries);
         const normalizedPriceSeries = zipWith(
             benchmarkPriceSeries,
             targetPriceSeries,
@@ -105,7 +108,7 @@ const evaluatePortfolio = async (portolio, period, dataParams) => {
                 benchmark
             };
         } catch (e) {
-            console.log('ERROR in eval portfolio', e);
+            console.log('ERROR in eval portfolio', symbol, e);
         }
     });
 };
@@ -115,5 +118,9 @@ module.exports = {
     evaluatePortfolio
 };
 
-evaluatePortfolio(positions, '1y');
-evaluatePortfolio(watchlist, '1y');
+// evaluatePortfolio([{ symbol: 'BRK.B', benchmark: 'spy' }], 'ytd');
+
+evaluatePortfolio(positions, 'ytd');
+evaluatePortfolio(watchlist, 'ytd');
+
+// { "symbol": "BRK.B", "benchmark": "SPY" }

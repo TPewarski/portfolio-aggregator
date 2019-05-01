@@ -8,10 +8,10 @@
         { "symbol": "NXPI", "benchmark": "qqq" },
         { "symbol": "JPM", "benchmark": "spy" },
         { "symbol": "COUP", "benchmark": "qqq" },
-        { "symbol": "HON", "benchmark": "spy" },
         { "symbol": "JNJ", "benchmark": "spy" }
     ],
     "watchlist": [
+        { "symbol": "HON", "benchmark": "spy" },
         {
             "symbol": "TSLA",
             "benchmark": "qqq"
