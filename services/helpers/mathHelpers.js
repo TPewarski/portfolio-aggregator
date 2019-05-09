@@ -1,6 +1,6 @@
 const get = require('lodash.get');
 
-const getStandardDeviation = (arr, path) => {
+const getMean = (arr, path) => {
     var total = 0;
 
     arr.forEach(val => {
@@ -10,8 +10,10 @@ const getStandardDeviation = (arr, path) => {
         }
         total += data;
     });
-    const avg = total / arr.length;
-
+    return total / arr.length;
+};
+const getStandardDeviation = (arr, path) => {
+    const avg = getMean(arr, path);
     var total = 0;
     arr.forEach(val => {
         let data = val;
@@ -26,5 +28,6 @@ const getStandardDeviation = (arr, path) => {
 };
 
 module.exports = {
-    getStandardDeviation
+    getStandardDeviation,
+    getMean
 };

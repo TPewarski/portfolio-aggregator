@@ -18,6 +18,7 @@ const getParams = (params, isSandbox) =>
     );
 
 const normalizeResp = resp => {
+    console.log('Response Status: ', resp.status);
     if (resp.status !== 200) {
         console.log('resp', resp);
         return resp;
@@ -33,10 +34,9 @@ const iexFetch = (...args) => {
 };
 
 async function getRevenueData(symbol, last = 4, params) {
-    return fetch(
+    return iexFetch(
         `${getIEXUrl(isSandbox)}/stock/${symbol}/financials/${last}?${getParams(params, isSandbox)}`
     )
-        .then(normalizeResp)
         .then(data => {
             const financials = data.financials;
             return financials.map(({ totalRevenue, reportDate }) => ({

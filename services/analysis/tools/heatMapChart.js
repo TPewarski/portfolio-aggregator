@@ -1,4 +1,5 @@
 const { getRevenueData, getPriceData, getKeyStats } = require('../../helpers/IEXHelpers');
+const { getMean, getStandardDeviation } = require('../../helpers/mathHelpers');
 
 const heatMap = (multipleList, period) => {
     // get multiple range
@@ -36,6 +37,7 @@ const generateMultiple = (normalizeData, prices) => {
 const heatMapChart = async symbol => {
     try {
         //get financial data
+        // TODO store revenue data in DB if it doesnt already exist
         const revenueUnsorted = await getRevenueData(symbol, 4);
         const revenue = (revenueUnsorted || []) && revenueUnsorted.reverse();
         const firstReportDate = revenue[0].reportDate.split('-').join('');
@@ -44,7 +46,7 @@ const heatMapChart = async symbol => {
         const float = await getKeyStats(symbol, 'float');
 
         //get prices from the start of revenue data
-        const priceSeries = await getPriceData(symbol, '1m');
+        const priceSeries = await getPriceData(symbol, '3m');
 
         let minPS = null;
         let maxPS = null;
@@ -112,6 +114,11 @@ const heatMapChart = async symbol => {
                 });
             }
         });
+        console.log(psSeries);
+        const avg = getMean(psSeries, 'priceToSales');
+        const stanDev = getStandardDeviation(psSeries, 'priceToSales');
+        const lastVal = psSeries[psSeries.length - 1];
+        console.log('avg: ', avg, 'sd: ', stanDev, 'lastMultiple: ', lastVal.priceToSales);
 
         return {
             //[{date: date, value: price}]

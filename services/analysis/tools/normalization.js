@@ -120,7 +120,7 @@ module.exports = {
 
 // evaluatePortfolio([{ symbol: 'BRK.B', benchmark: 'spy' }], 'ytd');
 
-evaluatePortfolio(positions, 'ytd');
-evaluatePortfolio(watchlist, 'ytd');
+evaluatePortfolio(positions, '1y');
+evaluatePortfolio(watchlist, '1y');
 
 // { "symbol": "BRK.B", "benchmark": "SPY" }
